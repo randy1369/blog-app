@@ -1,0 +1,294 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+  <title>{% block title %}{% endblock %}</title>
+
+  <!-- Custom CSS link -->
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;500;600;700;800&display=swap"
+    rel="stylesheet">
+  <link rel="icon" type="image/x-icon" href="{% static 'images/favicon.ico' %}">
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+  integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+  
+  <link id="white-theme-stylesheet" rel="stylesheet" href="{% static 'css/blog/style-white.css' %}">
+  <link id="black-theme-stylesheet" rel="stylesheet" href="{% static 'css/blog/style-black.css' %}" disabled>
+
+  <!-- Your existing HTML code -->
+
+  <style>
+  /* Custom CSS to align the button with other list items */
+    .nav-item {
+        display: flex;
+        align-items: center; /* Vertically align items */
+    }
+    
+    .nav-link {
+        line-height: 1.2; /* Adjust line height as needed */
+    }
+
+    .theme-switch {
+       margin-right: 10px;
+       margin-top: 15px; /* Adjust the margin as needed to control the spacing between the switch and other list items */
+       margin-bottom: 10px;
+      }
+
+  </style>
+  
+  <style>
+    /* CSS to style all anchor tags */
+    a {
+        text-decoration: none; /* Remove underline */
+        color: inherit; /* Inherit text color from parent */
+        transition: color 0.2s; /* Add a smooth color transition on hover */
+    }
+    
+    /* CSS to change the text color on hover */
+    a:hover {
+        color: your-desired-hover-color; /* Change the color on hover */
+    }
+  </style>
+    
+    
+</head>
+
+<body>
+
+  <nav class="navbar navbar-expand-md border-bottom border-secondary border-opacity-50 fixed-top" style="height: 60px; /* Adjust as needed */">
+
+    <div class="container-fluid">
+        
+
+
+        <a class="navbar-brand d-md-none justify-content-start" href="#"  data-bs-toggle="offcanvas" data-bs-target="#offcanvasLeft" aria-controls="offcanvasLeft">
+            <i class="bi bi-three-dots" ></i>
+        </a>
+
+
+        <a class="navbar-brand" href="{% url 'blog:blog_list' %}">
+
+          <img  src="{% static 'images/logo4.svg' %}" alt="Logo" width="30" height="24">
+          
+        </a>
+          
+
+          
+
+      <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas"
+       data-bs-target="#offcanvasRight" aria-controls="offcanvasRight" 
+       aria-expanded="false" aria-label="Toggle Navigation">
+       <i class="bi bi-list"></i>
+      </button>
+
+      <div class="offcanvas offcanvas-end " tabindex="-1" id="offcanvasRight" data-bs-scroll="true" aria-labelledby="offcanvasRightLabel">
+
+        <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="offcanvasRightLabel">Offcanvas Right</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        
+        <div class="offcanvas-body justify-content-evenly  ms-2">
+
+            <ul class="navbar-nav  mb-2 mb-lg-0">
+
+
+
+                <li class="nav-item">
+                    <a href="{% url 'blog:blog_list' %}" aria-current="page" class="nav-link">Blog</a>
+                </li>
+
+                <li class="nav-item">
+                    <a href="{% url 'blog:cattags' %}" class="nav-link">Categories</a>
+                </li>
+
+
+
+                {% if user.is_authenticated %}
+
+                <li class="nav-item">
+
+                <a class="nav-link" href="{% url 'blog:profile' pk=request.user.pk %}">Account</a>
+
+                </li>
+
+
+                <li class="nav-item">
+
+                  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" style="background: transparent; border: none;" >
+                    <i class="bi bi-power text-primary focus-ring "></i>
+                  </button>
+                  
+                 
+                  <!-- Modal -->
+                  <div class="modal fade modal-black" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h1 class="modal-title fs-5" id="exampleModalLabel">Logout</h1>
+                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+
+                        <div class="modal-body">
+                          <h5> Are you sure you want to Logout?</h5>
+                        </div>
+
+                        <div class="modal-footer">
+
+                          <button type="button" class="btn  btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="button"  class="btn btn-danger ">
+                              <a  href="{% url 'blog:logout' %}">
+                                Logout 
+                              </a>
+                            </button>
+
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                
+                </li>
+
+
+                
+                {% else %}
+
+                <li class="nav-item">
+
+                <a class="nav-link" href="{% url 'blog:login' %}">Sign In</a>
+
+                </li>
+
+                <li class="nav-item">
+
+                  <a class="nav-link" href="{% url 'blog:signup' %}">Sign Up</a>
+  
+                </li>
+
+
+                {% endif %}
+
+              <label class="theme-switch ms-2" for="theme-toggle" >
+                  <input type="checkbox" id="theme-toggle">
+                  <div class="toggle-slider"></div>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-toggle-on" viewBox="0 0 16 16">
+                    <path d="M5 3a5 5 0 0 0 0 10h6a5 5 0 0 0 0-10H5zm6 9a4 4 0 1 1 0-8 4 4 0 0 1 0 8z"/>
+                  </svg>
+              </label>
+
+
+            </ul>
+
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </nav>
+
+  <div class="container" style="margin-top: 80px;"> <!-- Add margin-top to create space below the fixed navbar -->
+    {% block content %}
+
+    
+    {% endblock %}
+  </div>
+
+
+  <!-- Offcanvas (visible on "md" and smaller screens) -->
+<div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasLeft" aria-labelledby="offcanvasLeftLabel">
+    
+
+
+  <div class="offcanvas-header">
+    <h5>Sidebar</h5>
+    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+  
+  <hr>
+
+  <a href="{% url 'blog:blog_list' %}">
+      <h6 class="ms-3">
+      <i class="bi bi-house"></i> Home
+      </h6>
+  </a>
+
+
+
+
+  <a href="{% url 'blog:blog_create' %}" class="btn-delete ">
+      <h6 style="margin-left: 16px; margin-top: 12px;" >
+          <i class="bi bi-plus-circle"></i>  Create
+      </h6>
+  </a>
+
+
+
+  <div style="display: flex;">
+      <form class="d-flex search-form" role="search" method="GET" action="{% url 'blog:search' %}">
+          <i class="bi bi-search search-color me-1 mt-1 "></i><input class="form-control me-2 search-input" type="search" name="q" placeholder='Search' aria-label="Search">
+      </form>      
+  </div>
+
+  <hr>
+
+  <h5 class="offcanvas-title" id="offcanvasLeftLabel">Categories</h5>
+  <div class="offcanvas-body">
+      <div>
+
+          {% for category in categories %}
+          <div class="mb-0">
+              <button class="btn dropdown-toggle"  data-bs-toggle="collapse" data-bs-target="#categorySection{{ category.id }}">
+                  <i class="bi bi-bank2 me-2"></i> {{ category.name }}
+              </button>
+
+              <div class="collapse" id="categorySection{{ category.id }}">
+                 
+                  <ul class="list-unstyled ms-3">
+
+                      {% for subcategory in category.subcategories.all %}
+                          <li><a href="#"><span class="subcategory">{{ subcategory.name }}</span></a></li>
+                      {% endfor %}
+
+                  </ul>
+
+              </div>
+          </div>
+          {% endfor %}
+
+      </div>
+
+
+  </div>
+
+</div>
+
+
+
+
+    
+  <script src="{% static 'js/script.js' %}"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.min.js" integrity="sha384-Rx+T1VzGupg4BHQYs2gCW9It+akI2MM/mndMCy36UVfodzcJcF0GGLxZIzObiEfa" crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <!-- ionicon link -->
+  <script type="module"
+    src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule
+    src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
+
+</body>
+
+</html>

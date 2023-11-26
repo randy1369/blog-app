@@ -1,0 +1,133 @@
+{% extends 'blog/base.html' %}
+
+{% block content %}
+
+
+
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class=" text-center">
+            
+            <br>
+
+
+
+            <button type="button" class="btn btn-primary me-2" id="categoriesButton">Categories</button>
+            <button type="button" class="btn btn-outline-secondary" id="tagsButton">Tags</button>
+            
+            <br>
+            
+            <input type="text" class="form-control mb-3 mx-auto mt-3" id="searchInput" placeholder="Search..." style="width: 200px; background: transparent; border: 1px solid #ced4da;">
+
+
+
+            <div id="categoriesSection" class="mt-3">
+                <h3 class="text-primary">Categories</h3>
+                <div class="row ">
+
+                    {% for category in categories %}
+
+                    <div class="col-sm-4 col-md-4 col-lg-3 mt-3">
+                        <div class="dropdown">
+                            <button class="btn btn-outline-secondary btn-sm dropdown-toggle" type="button"
+                            id="categoryDropdown{{ category.id }}" data-bs-toggle="dropdown"
+                            aria-haspopup="true" aria-expanded="false" data-category="{{ category.name }}">
+                        {{ category.name }}
+                            </button>
+                    
+
+                            <div class="dropdown-menu" aria-labelledby="categoryDropdown{{ category.id }}">
+                                {% for subcategory in category.subcategories.all %}
+                                <a class="dropdown-item" href="{% url 'blog:subcategory_posts' subcategory.id %}">{{ subcategory.name }}</a>
+                                {% endfor %}
+                            </div>
+                        </div>
+                        
+                    </div>
+                    
+
+                    {% endfor %}
+
+                </div>
+            </div>
+
+            <div id="tagsSection" style="display: none;" class="mt-4">
+                <h3 class="text-primary">Tags</h3>
+                <div class="row">
+                    {% for tag in tags %}
+                    <div class="col-sm-4 col-md-4 col-lg-3 mt-3">
+                        <a href="{% url 'blog:posts_by_tag' tag.id %}" class="btn btn-outline-primary btn-sm" data-tag="{{ tag.name }}">{{ tag.name }}</a>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+            
+            
+        </div>
+
+    </div>
+</div>
+
+<br>
+<br>
+
+
+<script>
+    // ... existing code ...
+
+    const searchInput = document.getElementById('searchInput');
+
+    // Add an event listener for the search input
+    searchInput.addEventListener('input', function () {
+        const searchTerm = searchInput.value.toLowerCase();
+
+        // Filter and display categories based on search input
+        filterAndDisplay(categoriesSection, searchTerm, 'Category');
+
+        // Filter and display tags based on search input
+        filterAndDisplay(tagsSection, searchTerm, 'Tag');
+    });
+
+    // Function to filter and display items based on search input
+    function filterAndDisplay(section, searchTerm, itemType) {
+        const items = section.querySelectorAll(`[data-${itemType.toLowerCase()}]`);
+
+        items.forEach(item => {
+            const itemName = item.dataset[itemType.toLowerCase()];
+            const shouldDisplay = itemName.toLowerCase().includes(searchTerm);
+
+            // Toggle a 'd-none' class instead of changing 'display'
+            item.classList.toggle('d-none', !shouldDisplay);
+        });
+    }
+</script>
+
+
+<script>
+    const categoriesButton = document.getElementById('categoriesButton');
+    const tagsButton = document.getElementById('tagsButton');
+    const categoriesSection = document.getElementById('categoriesSection');
+    const tagsSection = document.getElementById('tagsSection');
+
+    categoriesButton.addEventListener('click', function () {
+        categoriesButton.classList.remove('btn-outline-secondary');
+        categoriesButton.classList.add('btn-primary');
+        tagsButton.classList.remove('btn-primary');
+        tagsButton.classList.add('btn-outline-secondary');
+        categoriesSection.style.display = 'block';
+        tagsSection.style.display = 'none';
+    });
+
+    tagsButton.addEventListener('click', function () {
+        tagsButton.classList.remove('btn-outline-secondary');
+        tagsButton.classList.add('btn-primary');
+        categoriesButton.classList.remove('btn-primary');
+        categoriesButton.classList.add('btn-outline-secondary');
+        tagsSection.style.display = 'block';
+        categoriesSection.style.display = 'none';
+    });
+</script>
+
+
+{% endblock %}

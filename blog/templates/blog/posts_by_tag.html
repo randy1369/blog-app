@@ -1,0 +1,176 @@
+{% extends 'blog/base.html' %}
+
+{% block content %}
+
+
+<style>
+    .sidebar {
+        position: sticky;
+        top: 0;
+        height: 100vh; /* Adjust this to your preferred height */
+        overflow-y: auto;
+    }
+
+    .sidebar::-webkit-scrollbar {
+        width: 6px; /* Width of the scrollbar */
+    }
+
+    .sidebar::-webkit-scrollbar-thumb {
+        background-color: #666666; /* Color of the thumb */
+        border-radius: 3px; /* Rounded edges for the thumb */
+    }
+
+    .sidebar::-webkit-scrollbar-track {
+        background-color: #f0f0f0; /* Color of the track */
+    }
+</style>
+
+
+<div class="container mt-3" >
+
+    <div class="row" >
+        
+          <!-- Sidebar (visible on larger screens) -->
+        <nav class="col-md-4 col-lg-3 mt-5 ms-lg-3 border-secondary border-opacity-10 d-md-block sidebar"  style="height: 100vh; overflow-y: auto;">
+            <!-- Sidebar content here (e.g., categories and tags) -->
+
+           
+                <a href="{% url 'blog:blog_list' %}">
+                    <h6 class="ms-3">
+                    <i class="bi bi-house"></i> Home
+                    </h6>
+                </a>
+
+
+
+            
+            <a href="{% url 'blog:blog_create' %}" class="btn-delete ">
+                <h6 style="margin-left: 16px;">
+                    <i class="bi bi-plus-circle"></i>  Create
+                </h6>
+            </a>
+            
+            <div style="display: flex;">
+                <form class="d-flex search-form" role="search" method="GET" action="{% url 'blog:search' %}">
+                    <i class="bi bi-search search-color me-1 mt-1 "></i><input class="form-control me-2 search-input" type="search" name="q" placeholder='Search' aria-label="Search">
+                </form>      
+            </div>
+
+
+        
+            <hr>
+
+            <h6 class="text-capitalize bg-gradient mb-3">Topics</h6>
+
+
+
+            <div>
+
+                {% for category in categories|slice:":12" %}
+                <div class="mb-0">
+                    <button class="btn dropdown-toggle"  data-bs-toggle="collapse" data-bs-target="#categorySection{{ category.id }}">
+                        <i class="bi bi-bank2 me-2"></i> {{ category.name }}
+                    </button>
+
+                    <div class="collapse" id="categorySection{{ category.id }}">
+                       
+                        <ul class="list-unstyled ms-3 mt-1">
+
+                            {% for subcategory in category.subcategories.all %}
+                                <li><a href="{% url 'blog:subcategory_posts' subcategory.id %}" style="text-decoration: none;"><span class="subcategory">{{ subcategory.name }}</span>  </a></li>
+                            {% endfor %}
+
+                        </ul>
+
+                    </div>
+                </div>
+                {% endfor %}
+
+                {% if categories|length > 12 %}
+                <div class="text-center mt-1">
+                    <a href="{% url 'blog:cattags' %}" style="text-decoration: none;" class="see-more-link">See More</a>
+                </div>
+                {% endif %}
+
+            </div>
+
+            <hr>
+
+        </nav>
+          
+        <main class="col-md-7 col-lg-8 mt-5  ms-md-5" >
+            
+            <h2>Posts related to "{{ tag.name }}"</h2>
+
+            {% for post in posts %}
+
+                    <div class="d-flex position-relative blog-post mt-3 border border-secondary border-opacity-50 rounded shadow p-3">
+                        <a href="{% url 'blog:blog_detail' slug=post.slug %}">
+                            <img src="{{ post.image.url }}" class="flex-shrink-0 me-3 blog-post-image" alt="{{ post.title }}">
+                        </a>
+                        <div>
+                            <h5 class="mt-0">
+                                <a href="{% url 'blog:blog_detail' slug=post.slug %}">{{ post.title }}</a>
+                            </h5>
+                            <p>
+                                {% for line in post.first_three_lines %}
+                                    {{ line|safe|striptags }}
+                                {% endfor %}
+                            </p>
+                                                  
+                            <a href="{% url 'blog:blog_detail' slug=post.slug %}" class="stretched-link" >Read More</a>
+                        </div>
+                        <hr>
+                    </div>
+
+            {% empty %}
+    
+                <p>No blog posts available.</p>
+            
+            {% endfor %}
+
+            <br>
+
+            <nav aria-label="Page navigation" class="black-pagination">
+                <ul class="pagination justify-content-center">
+                    {% if posts.has_previous %}
+                        <li class="page-item">
+                            <a class="page-link" href="?page=1" aria-label="First">
+                                <span aria-hidden="true">&laquo;&laquo;</span>
+                            </a>
+                        </li>
+                        <li class="page-item">
+                            <a class="page-link" href="?page={{ posts.previous_page_number }}" aria-label="Previous">
+                                <span aria-hidden="true">&laquo;</span>
+                            </a>
+                        </li>
+                    {% endif %}
+                    
+                    <li class="page-item disabled"><span class="page-link">Page {{ posts.number }} of {{ posts.paginator.num_pages }}</span></li>
+                    
+                    {% if posts.has_next %}
+                        <li class="page-item">
+                            <a class="page-link" href="?page={{ posts.next_page_number }}" aria-label="Next">
+                                <span aria-hidden="true">&raquo;</span>
+                            </a>
+                        </li>
+                        <li class="page-item">
+                            <a class="page-link" href="?page={{ posts.paginator.num_pages }}" aria-label="Last">
+                                <span aria-hidden="true">&raquo;&raquo;</span>
+                            </a>
+                        </li>
+                    {% endif %}
+                </ul>
+            </nav>
+
+        </main>
+
+
+        
+         
+    </div>
+
+</div>
+
+
+{% endblock %}
