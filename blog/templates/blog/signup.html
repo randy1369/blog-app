@@ -1,0 +1,62 @@
+{% extends 'blog/base.html' %}
+
+{% block content %}
+
+
+<div class="container mt-5">
+  <div class="row justify-content-center">
+      <div class="col-md-6 col-lg-4 m-lg-5 m-md-5">
+          <div class="card  shadow black-card">
+              <div class="card-header ">Sign Up</div>
+              <div class="card-body">
+                  <form method="post">
+                      {% csrf_token %}
+                      
+                      <!-- First Name and Last Name fields in Bootstrap form groups -->
+                      <div class="form-group row">
+                          <div class="col">
+                              {{ form.first_name.label_tag }}
+                              {{ form.first_name }}
+                          </div>
+                          <div class="col">
+                              {{ form.last_name.label_tag }}
+                              {{ form.last_name }}
+                          </div>
+                      </div>
+                      
+                      <!-- Other form fields with labels -->
+                      <div class="form-group mt-2">
+                          {{ form.username.label_tag }}
+                          {{ form.username }}
+                      </div>
+                      <div class="form-group mt-2">
+                          {{ form.email.label_tag }}
+                          {{ form.email }}
+                      </div>
+                      <div class="form-group mt-2">
+                          {{ form.password.label_tag }}
+                          {{ form.password }}
+                      </div>
+                      <div class="form-group mt-2">
+                          {{ form.confirm_password.label_tag }}
+                          {{ form.confirm_password }}
+                      </div>
+                      
+                      <div class="text-center mt-2">
+                        <button type="submit" class="btn mt-2 btn-primary">Sign Up</button>
+                      </div>
+                     
+                  </form>
+
+                  <p class="mt-3 text-center">Already have an account? <a href="{% url 'blog:login' %}" class="btn btn-secondary ">Login Here</a></p>
+                  
+
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+
+
+
+{% endblock %}

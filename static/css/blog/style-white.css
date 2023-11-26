@@ -1,0 +1,227 @@
+/* White Theme Styles */
+body {
+    background-color: rgb(255, 255, 255);
+    color: #000;
+}
+
+
+
+/* Include your existing styles for larger screens */
+@media (min-width: 768px) {
+    .sidebar {
+        /* Add your custom styles for larger screens here */
+    }
+}
+
+/* Include your existing styles for medium screens */
+@media (max-width: 768px) {
+    .sidebar {
+        display: none; /* Hide the sidebar on medium screens */
+    }
+
+    .offcanvas {
+        display: block; /* Show offcanvas on medium screens */
+    }
+}
+
+
+.see-more-link {
+    text-decoration: none; 
+    color: #1b1b1b; 
+    padding: 4px 8px; /* Add padding to create a rectangular shape */
+    border-radius: 10px; /* Rounded corners */
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.see-more-link:hover {
+    background-color: rgb(156, 34, 255);; /* Change the background color to blue on hover */
+    color: #fff; /* Change the text color to white on hover */
+    cursor: pointer; /* Change the cursor to a pointer on hover */
+}
+
+
+.subcategory {
+    text-decoration: none; 
+    color: #1a1a1a; 
+    padding: 4px 8px; /* Add padding to create a rectangular shape */
+    border-radius: 10px; /* Rounded corners */
+    transition: background-color 0.3s, color 0.3s; /* Add smooth transitions for background and text color changes */
+}  
+
+
+
+.subcategory:hover {
+    background-color: rgb(156, 34, 255);; /* Change the background color to blue on hover */
+    color: #fff; /* Change the text color to white on hover */
+    cursor: pointer; /* Change the cursor to a pointer on hover */
+}
+
+.search-form {
+    margin-top: 7px;
+    margin-left: 18px;
+    height: 33px; /* Adjust the height as needed */
+    width: 250px;
+}
+
+/* Make the search bar transparent */
+.search-input {
+    background-color: transparent;
+    border: 1px solid rgb(54, 41, 54);
+    color: #fff; /* Text color for better visibility */
+}
+
+
+
+a.stretched-link:hover {
+    color: rgb(101, 6, 179); /* Change the color on hover */
+}
+
+
+.black-card {
+
+    border: none;
+    transition: transform 0.3s;
+}
+
+.black-card:hover {
+    transform: scale(1.02);
+}
+
+/* ==================================================================================== */
+
+
+.modal {
+    z-index: 1001; /* Adjust as needed */
+}
+
+/* Set the z-index for the modal backdrop */
+.modal-backdrop {
+    z-index: 1000; /* Ensure it's below the modal */
+}
+
+
+/* Style for the backdrop of the black-themed modal */
+.modal-black .modal-backdrop {
+background-color: rgba(46, 39, 39, 0.8); /* Adjust the opacity as needed */
+}
+
+/* Style for the black-themed modal content */
+.modal-black .modal-content {
+background-color: #3f3b3b; /* Background color for the modal content */
+color: #fff; /* Text color for the modal content */
+}
+
+/* Style for the black-themed modal header */
+.modal-black .modal-header {
+background-color: #39373a; /* Background color for the header */
+border-bottom: 1px solid #747272; /* Border color for the header */
+color: #fff; /* Text color for the header */
+}
+
+/* Style for the close button in the black-themed modal header */
+.modal-black .modal-header .btn-close {
+color: #fff; /* Close button color */
+}
+
+
+
+/* Style for the black-themed modal footer */
+.modal-black .modal-footer {
+background-color: #333; /* Background color for the footer */
+border-top: 1px solid #555; /* Border color for the footer */
+color: #3d3d3d; /* Text color for the footer */
+}
+
+
+
+/* ====================================================================================== */
+
+.offcanvas-body {
+    max-height: 80vh; /* Adjust the value as needed to control the maximum height */
+    overflow-y: auto;
+}
+
+  
+/* Include your existing sidebar styles */
+.sidebar {
+    background-color: #ffffff;
+    padding: 20px;
+    border-right: 1px solid #ffffff;
+}
+
+/* Include your existing category and tag styles */
+.sidebar h6 {
+    font-size: 16px;
+    margin-top: 20px;
+    color: #333;
+}
+
+.sidebar ul.list-unstyled {
+    list-style: none;
+    padding: 0;
+}
+
+.sidebar ul.list-unstyled li {
+    margin-bottom: 10px;
+}
+
+.sidebar ul.list-unstyled li a {
+    text-decoration: none;
+    color: #007bff;
+}
+
+.sidebar ul.list-unstyled li a:hover {
+    text-decoration: underline;
+}
+
+/* Include your existing styles for blog post images */
+.blog-post-image {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+}
+
+/* Add more styles for the white theme as needed */
+.navbar {
+    background-color: #fff; /* Change this to your desired background color for the white theme */
+}
+
+
+
+
+/* Custom style for the toggle switch */
+.theme-switch {
+    display: inline-block;
+    position: relative;
+    margin-top: 10px;
+    margin-right: 4px;
+    width: 60px;
+    height: 20px;
+    background-color: #ccc; /* Background color when the theme is white */
+    border-radius: 30px;
+    cursor: pointer;
+}
+
+.theme-switch input[type="checkbox"] {
+    display: none;
+}
+
+.theme-switch .toggle-slider {
+    position: absolute;
+    top: 2px;
+    right: 38px; /* Updated the 'right' value to match the 'left' in the next rule */
+    width: 16px;
+    height: 16px;
+    background-color: #fff; /* Color of the switch button when the theme is white */
+    border-radius: 50%;
+    transition: 0.3s;
+}
+
+.theme-switch input[type="checkbox"]:checked + .toggle-slider {
+    left: 2px; /* Set 'left' to match 'right' from the previous rule */
+    background-color: #000; /* Color of the switch button when the theme is black */
+}
+
+.theme-switch .bi-toggle-on {
+    display: none; /* Hide the smaller toggle icon */
+}

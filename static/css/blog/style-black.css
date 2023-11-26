@@ -1,0 +1,461 @@
+/* Black Theme Styles */
+body {
+    background-color: rgb(11, 10, 23);
+    color: #fff;
+}
+
+/* Include your existing styles for larger screens */
+@media (min-width: 768px) {
+    .sidebar {
+        /* Add your custom styles for larger screens here */
+    }
+
+
+
+}
+
+@media (max-width: 992px) {
+    .d-flex.position-relative.blog-post {
+        /* New styles for medium screens */
+        font-size: 14px;
+        max-width: 80%; /* Adjust as needed */
+    }
+}
+
+/* Include your existing styles for medium screens */
+@media (max-width: 768px) {
+    .sidebar {
+        display: none; /* Hide the sidebar on medium screens */
+    }
+
+    .offcanvas {
+        display: block; /* Show offcanvas on medium screens */
+    }
+
+    .d-flex.position-relative.blog-post {
+        /* New styles for small screens */
+        font-size: 14px;
+        max-width: 100%; /* Adjust as needed */
+    }
+
+}
+
+/* Medium screens */
+@media (min-width: 769px) and (max-width: 999px) {
+    .sidebar {
+        display: none; /* Hide the sidebar on medium screens */
+    }
+
+    .offcanvas {
+        display: block; /* Show offcanvas on medium screens */
+    }
+
+    .container{
+        margin-top: 20px; /* Add some space between the navbar and content */
+        margin-left: 10px;
+    }
+
+    main {
+        margin-bottom: 20px; /* Add some space between the content and the pagination */
+    }
+
+    .d-flex.position-relative.blog-post {
+        font-size: 12px;
+        max-width: 80%;
+        margin: 10px auto; /* Adjust margin for spacing between blog posts */
+        padding: 15px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        border-radius: 10px;
+    }
+}
+
+
+
+/* Extra-small screens */
+@media (max-width: 576px) {
+    .d-flex.position-relative.blog-post {
+        /* New styles for extra-small screens */
+        font-size: 12px;
+        max-width: 100%; /* Adjust as needed */
+    }
+}
+
+
+hr{
+    color: white;
+}
+
+.bi.bi-code-slash, .bi.bi-three-dots, .bi.bi-list  {
+    color: #fff; /* Change this to white or your desired color for the icon in the black theme */
+}
+
+span{
+    color: rgb(255, 255, 255);
+}
+
+.see-more-link {
+    
+    text-decoration: none; 
+    color: #c9c9c9; 
+    padding: 4px 8px; /* Add padding to create a rectangular shape */
+    border-radius: 10px; /* Rounded corners */
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.see-more-link:hover {
+    background-color: rgb(156, 34, 255);; /* Change the background color to blue on hover */
+    color: #fff; /* Change the text color to white on hover */
+    cursor: pointer; /* Change the cursor to a pointer on hover */
+}
+
+
+/* ========================= */
+/* =======search for cattags */
+#searchInput {
+    color: aliceblue;
+}
+
+#searchInput::placeholder {
+    color: rgb(228, 218, 218); /* Set the color for the placeholder text */
+}
+
+
+/* =========================== */
+
+/* Decrease the vertical height of the search bar */
+.search-form {
+    margin-top: 9px;
+    margin-left: 18px;
+    height: 33px; /* Adjust the height as needed */
+    width: 250px;
+    color: #000;
+  
+ 
+}
+
+.search-color {
+    color: white;
+}
+
+/* Make the search bar transparent */
+.search-input {
+   
+    background-color: transparent;
+    border: 1px solid rgb(54, 41, 54);
+    color: #000000; /* Text color for better visibility */
+}
+
+/* Apply styles on focus to keep the background transparent */
+.search-input:focus {
+    background-color: transparent;
+    outline: none; /* Remove the default focus outline if desired */
+    color: white;
+}
+
+/* Style the placeholder text */
+.search-input::placeholder {
+    color: rgba(247, 247, 247, 0.6); /* Adjust the color and opacity as needed */
+}
+
+/* Style the search button */
+.search-form button {
+    background-color: transparent;
+    border: none;
+    color: #000000; /* Text color for the search button */
+}
+
+
+
+/* CSS for the black theme */
+.black-pagination .page-link {
+    color: #fff; /* Text color for black theme */
+    background-color: rgb(20, 17, 17); /* Background color for black theme */
+    border: 1px solid #fff; /* Border color for black theme */
+}
+
+.black-pagination .page-item.disabled .page-link {
+    background-color: #222; /* Background color for disabled buttons in black theme */
+}
+
+
+/* Target the card with the "black-card" class */
+.black-card {
+    background: linear-gradient(135deg, #330831, #39104e);
+    color: white;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle box shadow */
+    border: none;
+    transition: transform 0.3s;
+}
+
+#username, #password {
+    background-color: transparent;
+    color: aliceblue;
+  }
+
+.form-group input {
+    background: transparent;
+    color: aliceblue;
+}
+
+.form-group input:focus {
+    background: transparent;
+    color: aliceblue;
+}
+
+.black-card:hover {
+    transform: scale(1.02);
+}
+
+
+.subcategory {
+    text-decoration: none; 
+    color: #b3b3b3; 
+    padding: 4px 8px; /* Add padding to create a rectangular shape */
+    border-radius: 10px; /* Rounded corners */
+    transition: background-color 0.3s, color 0.3s; /* Add smooth transitions for background and text color changes */
+}  
+
+
+
+.subcategory:hover {
+    background-color: rgb(156, 34, 255);; /* Change the background color to blue on hover */
+    color: #fff; /* Change the text color to white on hover */
+    cursor: pointer; /* Change the cursor to a pointer on hover */
+}
+
+
+/* Add any other specific styles you want for your form elements */
+/* Change link color on hover */
+a.stretched-link {
+    color: white;
+    text-decoration: none;
+    transition: color 0.3s; /* Add a smooth transition effect */
+}
+
+a.stretched-link:hover {
+    color: rgb(173, 72, 255); /* Change the color on hover */
+}
+
+
+
+/* =========================================================================================== */
+
+.modal {
+    z-index: 1001; /* Adjust as needed */
+}
+
+/* Set the z-index for the modal backdrop */
+.modal-backdrop {
+    z-index: 1000; /* Ensure it's below the modal */
+}
+
+
+/* Style for the backdrop of the black-themed modal */
+.modal-black .modal-backdrop {
+background-color: rgba(46, 39, 39, 0.8); /* Adjust the opacity as needed */
+}
+
+/* Style for the black-themed modal content */
+.modal-black .modal-content {
+background-color: #3f3b3b; /* Background color for the modal content */
+color: #fff; /* Text color for the modal content */
+}
+
+/* Style for the black-themed modal header */
+.modal-black .modal-header {
+background-color: #39373a; /* Background color for the header */
+border-bottom: 1px solid #747272; /* Border color for the header */
+color: #fff; /* Text color for the header */
+}
+
+/* Style for the close button in the black-themed modal header */
+.modal-black .modal-header .btn-close {
+color: #fff; /* Close button color */
+}
+
+
+
+/* Style for the black-themed modal footer */
+.modal-black .modal-footer {
+background-color: #333; /* Background color for the footer */
+border-top: 1px solid #555; /* Border color for the footer */
+color: #3d3d3d; /* Text color for the footer */
+}
+
+
+/* ========================================================================================== */
+
+/* Customize the offcanvas background and text color in the black theme */
+.offcanvas.black-theme {
+    background-color: #1b1919; /* Set a dark background color */
+    color: #fff; /* Set text color to white for better visibility */
+}
+
+
+.offcanvas.black-theme button[data-bs-dismiss="offcanvas"] {
+    background-color: #fff;
+ 
+}
+
+
+
+/* Style the offcanvas links for better visibility in black theme */
+.offcanvas.black-theme .nav-item a.nav-link  {
+    color: #fff; /* Set the link color to white */
+}
+
+/* Style the offcanvas links on hover */
+.offcanvas.black-theme .nav-item a.nav-link:hover {
+    color: #007bff; /* Change the color on hover, e.g., blue */
+}
+
+/* Style the toggle button for offcanvas in the black theme */
+.offcanvas.black-theme button[data-bs-toggle="offcanvas"] {
+    background-color: transparent; /* Set the background color of the toggle button */
+    border-color: #fff; /* Set the border color of the toggle button */
+    color: #fff; /* Set the text color of the toggle button */
+}
+
+
+/* ----------------------------------------------------------------- */
+
+
+/* Custom style for the offcanvas left */
+.offcanvas-start {
+    background-color: #fff; /* Background color when the theme is white */
+    color: #000; /* Text color in the offcanvas when the theme is white */
+    width: 250px; /* Set the desired width */
+    box-shadow: 3px 0px 6px rgba(0, 0, 0, 0.1); /* Add a shadow to the left side */
+}
+
+.theme-black .offcanvas-start {
+    background-color: #000; /* Background color when the theme is black */
+    color: #fff; /* Text color in the offcanvas when the theme is black */
+}
+
+.theme-black .offcanvas-header {
+    background-color: #000; /* Background color of the header in the black theme */
+    color: #fff; /* Text color in the header when the theme is black */
+}
+
+.theme-black .offcanvas-title {
+    color: #fff; /* Text color of the title in the black theme */
+}
+
+.theme-black .list-unstyled li a {
+    color: #fff; /* Text color for the links in the offcanvas when the theme is black */
+}
+
+.theme-black .btn-close {
+    color: #fff; /* Text color of the close button in the black theme */
+}
+
+
+/* ================================================================================================ */
+
+
+/* Style the navigation links */
+.nav-item a.nav-link  {
+    color: #fff; /* Set the default text color to white */
+    transition: color 0.3s; /* Smooth color transition on hover */
+}
+
+/* Change the link color when hovering */
+.nav-item a.nav-link:hover {
+    color: #007bff; /* Change the color to a more visible one on hover (e.g., blue) */
+}
+
+
+/* Override Bootstrap styles for the button text color */
+.btn {
+    color: #ffffff; /* Change this to your desired text color for the button in the black theme */
+}
+
+/* Include your existing sidebar styles */
+.sidebar {
+    background-color:  rgb(11, 10, 23);
+    padding: 0px;
+    border-right: 2px solid #000;
+    box-shadow: #150916;
+}
+
+/* Include your existing category and tag styles */
+.sidebar h6 {
+    font-size: 16px;
+    margin-top: 20px;
+    color: #ffffff;
+}
+
+.sidebar ul.list-unstyled {
+    list-style: none;
+    padding: 0;
+}
+
+.sidebar ul.list-unstyled li {
+    margin-bottom: 10px;
+}
+
+.sidebar ul.list-unstyled li a {
+    text-decoration: none;
+    color: #00a5ff;
+}
+
+.sidebar ul.list-unstyled li a:hover {
+    text-decoration: underline;
+}
+
+/* Include your existing styles for blog post images */
+.blog-post-image {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+}
+
+/* Add more styles for the black theme as needed */
+
+.navbar {
+    background-color: rgb(11, 10, 23); /* Change this to your desired background color for the black theme */
+}
+
+.offcanvas-body {
+    max-height: 80vh; /* Adjust the value as needed to control the maximum height */
+    overflow-y: auto;
+}
+
+
+/* Custom style for the toggle switch */
+.theme-switch {
+    display: inline-block;
+    position: relative;
+    margin-top: 10px;
+    margin-right: 4px;
+    width: 60px;
+    height: 20px;
+    background-color: #555151; /* Background color when the theme is white */
+    border-radius: 30px;
+    cursor: pointer;
+}
+
+.theme-switch input[type="checkbox"] {
+    display: none;
+}
+
+.theme-switch .toggle-slider {
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    width: 16px;
+    height: 16px;
+    background-color: #fff; /* Color of the switch button when the theme is white */
+    border-radius: 50%;
+    transition: 0.3s;
+}
+
+.theme-switch input[type="checkbox"]:checked + .toggle-slider {
+    left: 37px; /* Set 'left' to match 'right' from the previous rule */
+    background-color: #ffffff; /* Color of the switch button when the theme is black */
+}
+
+.theme-switch .bi-toggle-on {
+    display: none; /* Hide the smaller toggle icon */
+}
